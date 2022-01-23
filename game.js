@@ -105,7 +105,6 @@ const div=document.querySelector('div');
 const buttons=document.querySelectorAll('button');
 let roundResult=document.createElement('p');
 let scoreDisplay=document.createElement('p');
-let roundsPlayed=0;
 buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
         roundResult.remove();
@@ -119,12 +118,13 @@ buttons.forEach((button)=>{
         scoreDisplay=document.createElement('p');
         scoreDisplay.textContent="Computer Score:"+compScore+"\t"+"Player Score:"+playerScore;
         div.appendChild(scoreDisplay);
-        roundsPlayed+=1;
+        if(playerScore==5 || compScore==5)
+            showFinalResult();
     });
 });
 
 const p=document.createElement('p');
-if(roundsPlayed===5)
+function showFinalResult()
 {
     if(playerScore>compScore)
         p.textContent="Player Wins";
