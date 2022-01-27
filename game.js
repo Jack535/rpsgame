@@ -133,19 +133,23 @@ buttons.forEach((button)=>{
         let compMove=computerPlay();
         movesDisplay=document.createElement('div');
         movesDisplay.textContent="Computer Move:"+compMove+"\t"+"Player Move:"+playerMove;
+        movesDisplay.style.fontSize='1.3em';
         div.appendChild(movesDisplay);
         let curr_result=playRound(playerMove,compMove);
         roundResult=document.createElement('div');
         roundResult.textContent=curr_result;
+        roundResult.style.fontSize='1.3em';
         div.appendChild(roundResult);
         scoreDisplay=document.createElement('div');
         scoreDisplay.textContent="Computer Score:"+compScore+"\t"+"Player Score:"+playerScore;
+        scoreDisplay.style.fontSize='1.3em';
         div.appendChild(scoreDisplay);
         if(playerScore==5 || compScore==5)
         {
             p.remove();
             showFinalResult();
             reset();
+            div.appendChild(newGame);
         }
         div.appendChild(newGame);
     });
@@ -172,6 +176,7 @@ function showFinalResult()
     else
         p.textContent="Tied";
     
+    p.style.fontSize='1.5em';
     div.appendChild(p);
 }
 
