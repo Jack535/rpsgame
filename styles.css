@@ -2,6 +2,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #566095;
 }
 .buttons{
     display: flex;
@@ -23,4 +24,15 @@ button{
     justify-content: center;
     align-items: center;
     margin-top:12%;
+}
+
+button:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+
+#newgame{
+    border-radius: 10px;
+    margin-top: 15px;
+    width: 10%;
+    height: 2em;
 }
