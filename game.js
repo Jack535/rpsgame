@@ -97,35 +97,48 @@ function playGame(n)
     let result=playRound(player,computer);
     console.log(result);
 }*/
-const div=document.querySelector('div');
+const div=document.querySelector('.container');
 //const rockButton=document.querySelector('#rock');
 //const paperButton=document.querySelector('#paper');
 //const scissorButton=document.querySelector('#scissor');
 //const rockid=rockButton.getAttribute('id');
 const buttons=document.querySelectorAll('button');
-let roundResult=document.createElement('p');
-let scoreDisplay=document.createElement('p');
+let roundResult=document.createElement('div');
+let scoreDisplay=document.createElement('div');
+let movesDisplay=document.createElement('div');
+let p=document.createElement('div');
 buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
+        p.remove();
         roundResult.remove();
         scoreDisplay.remove();
+        movesDisplay.remove();
         let playerMove=button.getAttribute('id');
         let compMove=computerPlay();
+        movesDisplay=document.createElement('div');
+        movesDisplay.textContent="Computer Move:"+compMove+"\t"+"Player Move:"+playerMove;
+        div.appendChild(movesDisplay);
         let curr_result=playRound(playerMove,compMove);
-        roundResult=document.createElement('p');
+        roundResult=document.createElement('div');
         roundResult.textContent=curr_result;
         div.appendChild(roundResult);
-        scoreDisplay=document.createElement('p');
+        scoreDisplay=document.createElement('div');
         scoreDisplay.textContent="Computer Score:"+compScore+"\t"+"Player Score:"+playerScore;
         div.appendChild(scoreDisplay);
         if(playerScore==5 || compScore==5)
+        {
+            p.remove();
             showFinalResult();
+            compScore=0;
+            playerScore=0;
+        }
     });
 });
 
-const p=document.createElement('p');
+
 function showFinalResult()
 {
+    p=document.createElement('div');
     if(playerScore>compScore)
         p.textContent="Player Wins";
     else if(compScore>playerScore)
