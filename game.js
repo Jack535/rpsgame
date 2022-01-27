@@ -86,6 +86,19 @@ function playGame(n)
     }
 }
 
+function reset()
+{
+    playerScore=0;
+    compScore=0;
+}
+
+let newGame=document.createElement('button');
+newGame.setAttribute('id','newgame');
+newGame.textContent='New Game';
+newGame.style.backgroundColor='#f2f2f2';
+newGame.addEventListener('click',()=>{
+    reset();
+});
 //let rounds=prompt("Enter number of game rounds");
 //playGame(rounds);
 /*for(let i=1;i<=rounds;i++)
@@ -102,11 +115,14 @@ const div=document.querySelector('.container');
 //const paperButton=document.querySelector('#paper');
 //const scissorButton=document.querySelector('#scissor');
 //const rockid=rockButton.getAttribute('id');
+
 const buttons=document.querySelectorAll('button');
 let roundResult=document.createElement('div');
 let scoreDisplay=document.createElement('div');
 let movesDisplay=document.createElement('div');
 let p=document.createElement('div');
+scoreDisplay.textContent="Computer Score:"+compScore+"\t"+"Player Score:"+playerScore;
+div.appendChild(scoreDisplay);
 buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
         p.remove();
@@ -129,12 +145,22 @@ buttons.forEach((button)=>{
         {
             p.remove();
             showFinalResult();
-            compScore=0;
-            playerScore=0;
+            reset();
         }
+        div.appendChild(newGame);
     });
 });
 
+newGame.addEventListener('click',()=>{
+    reset();
+    p.remove();
+    roundResult.remove();
+    scoreDisplay.remove();
+    movesDisplay.remove();
+    scoreDisplay.textContent="Computer Score:"+compScore+"\t"+"Player Score:"+playerScore;
+    div.appendChild(scoreDisplay);
+    div.appendChild(newGame);
+});
 
 function showFinalResult()
 {
@@ -148,3 +174,6 @@ function showFinalResult()
     
     div.appendChild(p);
 }
+
+
+div.appendChild(newGame);
