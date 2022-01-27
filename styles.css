@@ -3,6 +3,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #566095;
+    flex-direction: column;
 }
 .buttons{
     display: flex;
@@ -35,4 +36,9 @@ button:hover{
     margin-top: 15px;
     width: 10%;
     height: 2em;
+}
+
+h1{
+    text-align: center;
+    color: #F9F1F4;
 }
